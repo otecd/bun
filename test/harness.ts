@@ -951,3 +951,27 @@ export function disableAggressiveGCScope() {
     },
   };
 }
+
+let networkInterfaces;
+
+function isIP(type: "IPv4" | "IPv6") {
+  if (!networkInterfaces) {
+    networkInterfaces = os.networkInterfaces();
+  }
+  for (const networkInterface of Object.values(networkInterfaces)) {
+    for (const { family } of networkInterface) {
+      if (family === type) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+export function isIPv6() {
+  return isIP("IPv6");
+}
+
+export function isIPv4() {
+  return isIP("IPv4");
+}
