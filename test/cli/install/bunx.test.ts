@@ -5,7 +5,7 @@ import { writeFile, rm } from "fs/promises";
 import { tmpdir } from "os";
 import { join } from "path";
 import { readdirSorted } from "./dummy.registry";
-import { readdirSync } from "js/node/fs/export-star-from";
+import { readdirSync } from "node:fs";
 
 let x_dir: string;
 let current_tmpdir: string;
